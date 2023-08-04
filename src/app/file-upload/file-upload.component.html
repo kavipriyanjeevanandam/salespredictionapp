@@ -1,0 +1,77 @@
+<div class="main-div">
+  <h1>Come, let's Predict the future</h1>
+  <mat-card
+    ><div class="contents">
+      <form [formGroup]="fileUploadForm" enctype="multipart/form-data">
+        <label>Enter a Parameter</label>
+        <mat-select class="form-control" formControlName="parameter">
+          <mat-option [value]="'Sales'">Sales</mat-option>
+        </mat-select>
+        <small
+          *ngIf="parameter?.errors && parameter?.touched"
+          style="color: red; display: block"
+          >Please select a parameter</small
+        >
+        <label>Enter a month</label>
+        <mat-select class="form-control" formControlName="month">
+          <mat-option [value]="'1'">January</mat-option>
+          <mat-option [value]="'2'">February</mat-option>
+          <mat-option [value]="'3'">March</mat-option>
+          <mat-option [value]="'4'">April</mat-option>
+          <mat-option [value]="'5'">May</mat-option>
+          <mat-option [value]="'6'">June</mat-option>
+          <mat-option [value]="'7'">July</mat-option>
+          <mat-option [value]="'8'">August</mat-option>
+          <mat-option [value]="'9'">September</mat-option>
+          <mat-option [value]="'10'">October</mat-option>
+          <mat-option [value]="'11'">November</mat-option>
+          <mat-option [value]="'12'">December</mat-option>
+        </mat-select>
+        <small
+          *ngIf="month?.errors && month?.touched"
+          style="color: red; display: block"
+          >Please select a month</small
+        >
+        <label>Enter a year</label>
+        <mat-select class="form-control" formControlName="year">
+          <mat-option [value]="'2019'">2019</mat-option>
+          <mat-option [value]="'2020'">2020</mat-option>
+          <mat-option [value]="'2021'">2021</mat-option>
+          <mat-option [value]="'2022'">2022</mat-option>
+          <mat-option [value]="'2023'">2023</mat-option>
+        </mat-select>
+        <small
+          *ngIf="year?.errors && year?.touched"
+          style="color: red; display: block"
+          >Please select a year</small
+        >
+        <label>Upload a csv file</label>
+        <input type="file" (change)="getFile($event)" class="form-control" />
+        <small
+          *ngIf="!filePresent && fileUploadClick"
+          style="color: red; display: block"
+          >Please select a csv file</small
+        >
+        <br />
+        <button
+          class="btn btn-primary"
+          [disabled]="
+            year?.errors || month?.errors || parameter?.errors || !filePresent
+          "
+          (click)="uploadDataForPrediction()"
+          type="submit"
+        >
+          Submit
+        </button>
+        <button
+          [disabled]="!enableResult"
+          class="btn btn-primary"
+          type="button"
+          routerLink="/visualize"
+        >
+          See results
+        </button>
+      </form>
+    </div>
+  </mat-card>
+</div>

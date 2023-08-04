@@ -1,0 +1,22 @@
+<div class="main-div">
+  <h1>Your prediction is here</h1>
+  <mat-card>
+    <canvas id="canvas">{{ chart }}</canvas>
+    <div class="but">
+      <div class="sub-div">
+        <label
+          >Predicted Sales:
+          <h3>{{ prediction }}</h3></label
+        >
+        <label
+          >RMSE :
+          <h3>{{ rmse }}</h3></label
+        >
+      </div>
+      <div class="but-div">
+        <button class="btn btn-primary" (click)="download()">Download</button>
+        <button class="btn btn-primary" routerLink="/result">BI report</button>
+      </div>
+    </div>
+  </mat-card>
+</div>
