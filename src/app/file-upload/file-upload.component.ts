@@ -79,7 +79,7 @@ export class FileUploadComponent implements OnInit {
   // Method to get result data from Flask server
   getResultsFromServer(): void {
     this.resp = this.flaskApi
-      .getData('http://127.0.0.1:5000/predict/results')
+      .getData('/api/predict/results')
       .subscribe((data) => {
         if (data.status == 'error') {
           this.router.navigate(['./error']);
